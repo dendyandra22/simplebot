@@ -1,0 +1,122 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: bot_challenge
+  examples: |
+    - who are you?
+    - what are you?
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: request_order
+  examples: |
+    - i'm looking for a AI services
+    - i'd like to have IT services
+    - can i make an order?
+    - i want to subscribe
+    - i am want to make an order
+    - i want to buy
+    - i would like to make a subscription
+
+- intent: about/company
+  examples: |
+    - tell me about this company
+    - can you explain it to me about this company
+    - tell me more about X'Bots
+    - give me more information about this brand
+    - what is X'Bots?
+    - explain to me what X'Bots is
+    - who are you guys doing?
+
+- intent: about/services
+  examples: |
+    - tell me about your product
+    - can you explain it to me about your product
+    - tell me more about your services offer
+    - give me more information about what your offer
+    - what kind of services do you offer?
+    - explain to me what services is provided here
+    - give me list of product or services you provide 
+
+- intent: thankyou
+  examples: |
+    - thank you
+    - thanks
+    - much obliged
+    - i appreciate it
+
+- intent: give_email
+  examples: |
+    - [johndoe@email.com](email)
+    - my email is [oiwer322@email.com](email)
+    - it is [poque@email.com](email)
+    - Sure, my email is [poi@email.org](email)
+    - No problem, it's [lejand@email.co.id](email)
+
+- intent: give_service
+  examples: |
+    - I want to subscribe [LiveBot](service)
+    - [NaBot](service)
+    - I would like to order [NaBot](service)
+    - I would like to order [LiveBot](service)
+    - I'd like to order [Livebot](service)
+    - Yes i want subscribe [Nabot](service)
+
+- intent: give_duration
+  examples: |
+    - I want to subscribe if for [1 Month](duration)
+    - [2 Month](duration)
+    - I would like to order [2 Month](duration)
+    - I would like to order [a month](duration)
+    - I'd like to order [a month](duration)
+    - Yes i want subscribe [2 Month](duration)

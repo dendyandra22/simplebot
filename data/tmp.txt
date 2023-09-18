@@ -1,0 +1,84 @@
+# - story: order services
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: request_order
+#   - action: utter_ask_order
+#   - intent:  
+#   - action:
+
+# entities:
+#   - service
+#   - duration
+#   - confirmation
+#   - payment
+
+# slots:
+#   - service:
+#     type: text
+#     mappings:
+#     - type: from_entity
+#       entity: service
+#   - duration:
+#     type: number
+#     mappings:
+#     - type: from_entity
+#       entity: duration
+#   - email:
+#     type: text
+#     mappings:
+#     - type: from_entity
+#       entity: email
+#   - confirm:
+#     type: bool
+#     mappings:
+#     - type: from_intent
+#       intent: affirm
+#       value: true
+#       conditions:
+#         - active_loop: order_form
+#           requested_slots: confirm
+#     - type: from_intent
+#       intent: deny
+#       value: false
+#       conditions:
+#         - active_loop: order_form
+#           requested_slots: confirm
+#   - payment:
+#     type: text
+#     mappings:
+#     - type: from_entity
+#       entity: payment
+
+ utter_ask_order:
+  - text: "What services do you want to subscribe?"
+
+  utter_ask_duration:
+  - text: "How long you want to subsribe?"
+
+  utter_ask_payment:
+  - text: "We accept payment with Debit card, Credit Card, and Bitcoin. Which one would you like to use?"
+
+  utter_ask_confirm:
+  - text: "Here is your order detail: \n
+          - Services: {service}\n
+          - Duration: {duration}\n
+          - Email   : {email}\n
+          - Payment : {payment}\n
+
+          Is that correct?
+        "
+- rule: order services
+  steps:
+  - intent: request_order
+  - action: order_form
+
+- rule: submit form
+  condition:
+  - active_loop: order_form
+  steps:
+  - action: order_form
+  - active_loop: null
+  - action: utter_ask_confirm
+  - intent: affirm
+  - action: utter_thankyou_order

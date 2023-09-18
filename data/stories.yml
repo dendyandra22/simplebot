@@ -1,0 +1,38 @@
+version: "3.1"
+
+stories:
+
+- story: asking about company / services
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: about
+  - action: utter_about
+  - intent: thankyou 
+  - action: utter_thankyou
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: chitchat
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: order services
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: request_order
+  - action: utter_ask_order
+  - intent: give_service
+  - action: utter_ask_duration
+  # - intent: give_duration
+  - intent: affirm
+  - action: utter_ask_email
+  - intent: give_email
+  - action: utter_thankyou_order
+
+
+

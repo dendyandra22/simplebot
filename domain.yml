@@ -1,0 +1,73 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - thankyou
+  - about
+  - request_order
+  - give_service
+  - give_email
+       
+entities:
+  - email
+  - service
+
+slots:
+  email:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: email
+  service:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: service
+
+responses:
+  utter_greet:
+  - text: "Welcome to SimpleBot! What can I help you today?"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_thankyou:
+  - text: "You're welcome, I'm glad to help you. Do you have any question?"
+  - text: "No problem, I'm glad to help you. Do you need more assistant?"
+  
+  utter_ask_order:
+  - text: "What services do you want to subscribe?"
+
+  utter_ask_duration:
+  - text: "How long you want to subsribe?"
+
+  utter_ask_payment:
+  - text: "We accept payment with Debit card, Credit Card, and Bitcoin. Which one would you like to use?"
+
+  utter_ask_email:
+  - text: "Please provide your email"
+  - text: "May I know your email?"
+  
+  utter_thankyou_order:
+  - text: "Thank you for using our services! Details of your services will be sent to your email at {email}"
+
+  utter_about/company:
+  - text: "We are X'Bots, we provide many AI and IT services to support your company. Our company established in 2027 and currently we have moe than 90 clients"
+
+  utter_about/services:
+  - text: "We offer you 2 different services, namely LiveBot provide live chatting and NaBot for Natural Language AI services"
+
+  utter_goodbye:
+  - text: "See you later. If you need more assistant, feel free to contact me again"
+  - text: "If you need help, feel free to contact me again. See you!"
+  
+  utter_iamabot:
+  - text: "I am a LiveBot. I am here to provide you information about our company and services"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,35 @@
+version: "3.1"
+
+rules:
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: greetings
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: respond to about company / services
+  steps:
+  - intent: about
+  - action: utter_about
+
+- rule : respond to thankyou 
+  steps:
+  - intent: thankyou
+  - action: utter_thankyou
+
+- rule: asking did that help happy
+  steps:
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_thankyou
+
+- rule: asking did that help unhappy
+  steps:
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_iamabot
