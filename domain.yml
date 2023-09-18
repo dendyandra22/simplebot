@@ -1,6 +1,8 @@
 version: "3.1"
 
 intents:
+  - give_service
+  - give_email
   - greet
   - goodbye
   - affirm
@@ -9,8 +11,6 @@ intents:
   - thankyou
   - about
   - request_order
-  - give_service
-  - give_email
        
 entities:
   - email
@@ -28,6 +28,12 @@ slots:
     - type: from_entity
       entity: service
 
+forms:
+  service_form:
+    required_slots:
+      - email
+      - service
+
 responses:
   utter_greet:
   - text: "Welcome to SimpleBot! What can I help you today?"
@@ -39,7 +45,7 @@ responses:
   - text: "You're welcome, I'm glad to help you. Do you have any question?"
   - text: "No problem, I'm glad to help you. Do you need more assistant?"
   
-  utter_ask_order:
+  utter_ask_service:
   - text: "What services do you want to subscribe?"
 
   utter_ask_duration:
@@ -52,6 +58,14 @@ responses:
   - text: "Please provide your email"
   - text: "May I know your email?"
   
+  utter_ask_confirm:
+  - text: "Here is your order detail: \n
+          - Services: {service}\n
+          - Email   : {email}\n
+
+          Is that correct?
+        "
+
   utter_thankyou_order:
   - text: "Thank you for using our services! Details of your services will be sent to your email at {email}"
 
@@ -68,6 +82,8 @@ responses:
   utter_iamabot:
   - text: "I am a LiveBot. I am here to provide you information about our company and services"
 
+
+    
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

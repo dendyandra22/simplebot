@@ -33,3 +33,19 @@ rules:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_iamabot
+
+- rule: order services
+  steps:
+  - intent: request_order
+  - action: service_form
+  - active_loop: service_form 
+
+- rule: submit form
+  condition:
+  - active_loop: service_form
+  steps:
+  - action: service_form
+  - active_loop: null
+  - action: utter_ask_confirm
+  - intent: affirm
+  - action: utter_thankyou_order
