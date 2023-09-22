@@ -1,89 +1,135 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - give_service
-  - give_email
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - bot_challenge
-  - thankyou
-  - about
-  - request_order
-       
+- about:
+    used_entities:
+    - duration
+    - email
+    - payment
+    - service
+    is_retrieval_intent: true
+- affirm
+- bot_challenge
+- chitchat:
+    used_entities:
+    - duration
+    - email
+    - payment
+    - service
+    is_retrieval_intent: true
+- deny
+- give_information
+- goodbye
+- greet
+- request_order
+- stop
+- thankyou
+actions:
+- utter_ask_confirm
+- utter_thankyou_order
+- utter_chitchat
+- validate_service_form
+- utter_about
 entities:
-  - email
-  - service
-
+- duration
+- email
+- payment
+- service
 slots:
   email:
     type: text
     mappings:
     - type: from_entity
       entity: email
+      intent:
+      - give_information
+      conditions:
+      - active_loop: service_form
+      - requested_slot: email
   service:
     type: text
     mappings:
     - type: from_entity
       entity: service
-
+      intent:
+      - give_information
+      conditions:
+      - active_loop: service_form
+      - requested_slot: service
+  duration:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: duration
+      intent:
+      - give_information
+      conditions:
+      - active_loop: service_form
+      - requested_slot: duration
+  payment:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: payment
+      intent:
+      - give_information
+      conditions:
+      - active_loop: service_form
+      - requested_slot: payment
 forms:
   service_form:
     required_slots:
-      - email
-      - service
-
+    - service
+    - duration
+    - email
+    - payment
 responses:
   utter_greet:
-  - text: "Welcome to SimpleBot! What can I help you today?"
-
+  - text: Welcome to SimpleBot! What can I help you today?
   utter_did_that_help:
-  - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_thankyou:
-  - text: "You're welcome, I'm glad to help you. Do you have any question?"
-  - text: "No problem, I'm glad to help you. Do you need more assistant?"
-  
+  - text: You're welcome, I'm glad to help you. Do you have any question?
+  - text: No problem, I'm glad to help you. Do you need more assistant?
   utter_ask_service:
-  - text: "What services do you want to subscribe?"
-
+  - text: What services do you want to subscribe?
   utter_ask_duration:
-  - text: "How long you want to subsribe?"
-
+  - text: How many months do you want to subsribe?
   utter_ask_payment:
-  - text: "We accept payment with Debit card, Credit Card, and Bitcoin. Which one would you like to use?"
-
+  - text: We accept payment with Debit card, Credit Card, and Bitcoin. Which one would you like to use?
   utter_ask_email:
-  - text: "Please provide your email"
-  - text: "May I know your email?"
-  
+  - text: May I know your email?
   utter_ask_confirm:
-  - text: "Here is your order detail: \n
-          - Services: {service}\n
-          - Email   : {email}\n
+  - text: |-
+      Here is your order detail: 
+       - Services: {service}
+       - Duration: {duration}
+       - Payment : {payment}
+       - Email   : {email}
 
-          Is that correct?
-        "
-
+      Is that correct? 
+  utter_affirm_stop_form:
+  - text: Your order has been canceled. What can I help you now?
+  utter_thankyou_feedback:
+  - text: Thank you for your feeback
   utter_thankyou_order:
-  - text: "Thank you for using our services! Details of your services will be sent to your email at {email}"
-
+  - text: Thank you for using our services! Details of your services will be sent to your email at {email}
   utter_about/company:
-  - text: "We are X'Bots, we provide many AI and IT services to support your company. Our company established in 2027 and currently we have moe than 90 clients"
-
+  - text: We are X'Bots, we provide many AI and IT services to support your company. Our company established in 2027 and currently we have moe than 90 clients
   utter_about/services:
-  - text: "We offer you 2 different services, namely LiveBot provide live chatting and NaBot for Natural Language AI services"
-
+  - text: We offer you 2 different services, namely LiveBot provide live chatting and NaBot for Natural Language AI services
   utter_goodbye:
-  - text: "See you later. If you need more assistant, feel free to contact me again"
-  - text: "If you need help, feel free to contact me again. See you!"
-  
+  - text: See you later. If you need more assistant, feel free to contact me again
+  - text: If you need help, feel free to contact me again. See you!
   utter_iamabot:
-  - text: "I am a LiveBot. I am here to provide you information about our company and services"
-
-
-    
+  - text: I am a LiveBot. I am here to provide you information about our company and services
+  utter_ask_continue:
+  - text: Do you want to continue?
+  utter_chitchat/feeling:
+  - text: I'm feeling good today!
+  - text: I'm good today
+  - text: I feel really great now 
+  utter_default:
+  - text: Sorry, I didn't understand you, please try input something else
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

@@ -20,7 +20,236 @@ stories:
   - intent: bot_challenge
   - action: utter_iamabot
 
+- story: order form finish affirm confirm
+  steps: 
+  # - intent: request_order
+  # - action: service_form
+  # - active_loop: service_form
+  # - active_loop: null
+  # - slot_was_set:
+  #   - requested_slot: null
+  - action: utter_ask_confirm
+  - intent: affirm
+  - action: utter_thankyou_order
+  - action: utter_did_that_help
+  - or:
+    - intent: affirm
+    - intent: deny
+  - action: utter_thankyou_feedback
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: order form finish deny confirm
+  steps: 
+  # - intent: request_order
+  # - action: service_form
+  # - active_loop: service_form
+  # - intent: give_information
+  # - active_loop: null
+  # - slot_was_set:
+  #   - requested_slot: null
+  - action: utter_ask_confirm
+  - intent: deny
+  - action: utter_affirm_stop_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+    - service: null
+    - duration: null
+    - email: null
+    - payment: null
+  - intent: goodbye
+  - action: utter_goodbye
+  
+- story: order form stop
+  steps:
+  # - intent: request_order
+  # - action: service_form
+  # - active_loop: service_form
+  - intent: stop
+  - action: utter_ask_continue
+  - intent: deny
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - service: null
+    - duration: null
+    - email: null
+    - payment: null
+  - action: utter_affirm_stop_form
+  - intent: goodbye
+  - action: utter_goodbye
 
+- story: order form stop-continue
+  steps:
+  # - intent: request_order
+  # - action: service_form
+  # - active_loop: service_form
+  - intent: stop
+  - action: utter_ask_continue
+  - intent: affirm
+  - action: service_form
+  - active_loop: service_form
 
+# - story: interactive_story_1
+#   steps:
+#   - intent: request_order
+#   - action: service_form
+#   - active_loop: service_form
+#   - slot_was_set:
+#     - requested_slot: service
+#   - intent: give_information
+#     entities:
+#     - service: live$bot
+#   - slot_was_set:
+#     - service: live$bot
+#   - action: service_form
+#   - slot_was_set:
+#     - service: null
+#   - slot_was_set:
+#     - requested_slot: service
+#   - intent: give_information
+#     entities:
+#     - service: LiveBot
+#   - slot_was_set:
+#     - service: LiveBot
+#   - action: service_form
+#   - slot_was_set:
+#     - service: LiveBot
+#   - slot_was_set:
+#     - requested_slot: duration
+#   - intent: stop
+#   - action: utter_ask_continue
+#   - intent: deny
+#   - action: action_deactivate_loop
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_affirm_stop_form
+#   - intent: about
+#   - action: utter_about
 
+# - story: interactive_story_1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: request_order
+#   - action: service_form
+#   - active_loop: service_form
+#   - slot_was_set:
+#     - requested_slot: service
+#   - intent: give_information
+#     entities:
+#     - service: live$bot
+#   - slot_was_set:
+#     - service: live$bot
+#   - action: service_form
+#   - slot_was_set:
+#     - service: null
+#   - slot_was_set:
+#     - requested_slot: service
+#   - intent: give_information
+#     entities:
+#     - service: LiveBot
+#   - slot_was_set:
+#     - service: LiveBot
+#   - action: service_form
+#   - slot_was_set:
+#     - service: LiveBot
+#   - slot_was_set:
+#     - requested_slot: duration
+#   - intent: stop
+#   - action: utter_ask_continue
+#   - intent: deny
+#   - action: action_deactivate_loop
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_affirm_stop_form
 
+# - story: interactive_story_2
+#   steps:
+#   - intent: request_order
+#   - action: service_form
+#   - active_loop: service_form
+#   - slot_was_set:
+#     - requested_slot: service
+#   - intent: give_information
+#     entities:
+#     - service: livebot
+#   - slot_was_set:
+#     - service: livebot
+#   - action: service_form
+#   - slot_was_set:
+#     - service: livebot
+#   - slot_was_set:
+#     - requested_slot: duration
+#   - intent: stop
+#   - action: utter_ask_continue
+#   - intent: deny
+#   - action: action_deactivate_loop
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_affirm_stop_form
+#   - intent: thankyou
+#   - action: utter_thankyou
+
+# - story: interactive_story_3
+#   steps:
+#   - intent: chitchat
+#   - action: utter_chitchat
+#   - intent: request_order
+#   - action: service_form
+#   - active_loop: service_form
+#   - slot_was_set:
+#     - requested_slot: service
+#   - intent: give_information
+#     entities:
+#     - service: Nabot
+#     - duration: 4 month
+#     - payment: bitcoin
+#     - email: poi@email.com
+#   - slot_was_set:
+#     - email: poi@email.com
+#   - slot_was_set:
+#     - service: Nabot
+#   - slot_was_set:
+#     - duration: 4 month
+#   - slot_was_set:
+#     - payment: bitcoin
+#   - action: service_form
+#   - slot_was_set:
+#     - email: poi@email.com
+#   - slot_was_set:
+#     - service: Nabot
+#   - slot_was_set:
+#     - duration: 4 month
+#   - slot_was_set:
+#     - payment: null
+#   - slot_was_set:
+#     - requested_slot: payment
+#   - intent: give_information
+#     entities:
+#     - payment: Bitcoin
+#   - slot_was_set:
+#     - payment: Bitcoin
+#   - action: service_form
+#   - slot_was_set:
+#     - payment: null
+#   - slot_was_set:
+#     - requested_slot: payment
+#   - intent: give_information
+#     entities:
+#     - payment: bitcoin
+#   - slot_was_set:
+#     - payment: bitcoin
+#   - action: service_form
+#   - slot_was_set:
+#     - payment: bitcoin
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_ask_confirm
+#   - intent: affirm
+#   - action: utter_thankyou_order

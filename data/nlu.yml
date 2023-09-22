@@ -94,29 +94,60 @@ nlu:
     - thanks
     - much obliged
     - i appreciate it
-
-- intent: give_email
+    - sorry to bother you
+    - thanks for your help
+    - alright, that's helpful
+    - that is really helpful
+  
+- intent: give_information
   examples: |
     - [johndoe@email.com](email)
     - my email is [oiwer322@email.com](email)
     - it is [poque@email.com](email)
     - Sure, my email is [poi@email.org](email)
     - No problem, it's [lejand@email.co.id](email)
-
-- intent: give_service
-  examples: |
+    - sure, my active email is [ijfew@oksa.co.uk](email)
+    - it's [oqke@yahoo.co.id](email)
+    - [hwq@look.com](email)
     - I want to subscribe [LiveBot](service)
     - [NaBot](service)
     - I would like to order [NaBot](service)
     - I would like to order [LiveBot](service)
     - I'd like to order [Livebot](service)
-    - Yes i want subscribe [Nabot](service)
-
-- intent: give_duration
-  examples: |
+    - Yes i want subscribe [Nabot](service) for [3 month](duration)
     - I want to subscribe if for [1 Month](duration)
     - [2 Month](duration)
-    - I would like to order [2 Month](duration)
-    - I would like to order [a month](duration)
-    - I'd like to order [a month](duration)
+    - I would like to order [LiveBot](service) for [12 month](duration)
+    - I would like to order [5 month](duration)
+    - I'd like to order NaBot uo to [8 month](duration)
     - Yes i want subscribe [2 Month](duration)
+    - I want to pay it with [Bitcoin](payment) please
+    - [debit card](payment)
+    - [credit card](payment) please
+    - [Credit Card](payment)
+    - Okay, i will use [bitcoin](payment) then
+    - Umm, i choose [debit](payment) then
+    - sure, i'm using [credit card](payment)
+
+- intent: stop
+  examples: |
+    - stop
+    - please stop
+    - i dont want to continue
+    - cancel please
+    - halt
+    - i do not wish to continue
+    - wait
+    - cancel, i do not want to proceed
+    - that's not what i want
+    - ok, but that doesnt help me
+    - this is leading to nothing
+    - go back
+    - nevermind
+
+- intent: chitchat/feeling
+  examples: |
+    - how are you today?
+    - how is your feeling?
+    - what do you feel right now?
+    - how do you do?
