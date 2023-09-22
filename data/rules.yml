@@ -12,6 +12,11 @@ rules:
   - intent: greet
   - action: utter_greet
 
+- rule: goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
 - rule: respond to about company / services
   steps:
   - intent: about
@@ -22,30 +27,45 @@ rules:
   - intent: thankyou
   - action: utter_thankyou
 
-- rule: asking did that help happy
-  steps:
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_thankyou
+# - rule: asking did that help happy
+#   steps:
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_thankyou
 
-- rule: asking did that help unhappy
-  steps:
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_iamabot
+# - rule: asking did that help unhappy
+#   steps:
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_iamabot
 
-- rule: order services
+- rule: activate service form
   steps:
   - intent: request_order
   - action: service_form
   - active_loop: service_form 
 
-- rule: submit form
+- rule: submit service form
   condition:
   - active_loop: service_form
   steps:
   - action: service_form
   - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
   - action: utter_ask_confirm
-  - intent: affirm
-  - action: utter_thankyou_order
+
+- rule: interruption service form
+  condition:
+    - active_loop: service_form
+  steps:
+  - or:
+    - intent: chitchat
+    - intent: stop
+  - action: utter_ask_continue
+
+
+- rule: Chitchat
+  steps:
+    - intent: chitchat
+    - action: utter_chitchat
