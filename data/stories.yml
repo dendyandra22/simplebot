@@ -52,12 +52,7 @@ stories:
   - intent: deny
   - action: utter_affirm_stop_form
   - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-    - service: null
-    - duration: null
-    - email: null
-    - payment: null
+  - action: action_reset_service_form_slots
   - intent: goodbye
   - action: utter_goodbye
   
@@ -71,11 +66,12 @@ stories:
   - intent: deny
   - action: action_deactivate_loop
   - active_loop: null
-  - slot_was_set:
-    - service: null
-    - duration: null
-    - email: null
-    - payment: null
+  - action: action_reset_service_form_slots
+  # - slot_was_set:
+  #   - service: null
+  #   - duration: null
+  #   - email: null
+  #   - payment: null
   - action: utter_affirm_stop_form
   - intent: goodbye
   - action: utter_goodbye

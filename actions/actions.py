@@ -13,6 +13,14 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormValidationAction
 from rasa_sdk.types import DomainDict
+from rasa_sdk.events import SlotSet, AllSlotsReset
+
+class ServiceFormSlotsReset(Action):
+    def name(self)->Text:
+        return "action_reset_service_form_slots"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: DomainDict):
+        return [AllSlotsReset()]
 
 class ValidateServiceForm(FormValidationAction):
     def name(self)-> Text:

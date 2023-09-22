@@ -28,6 +28,7 @@ actions:
 - utter_thankyou_order
 - utter_chitchat
 - validate_service_form
+- action_reset_service_form_slots
 - utter_about
 entities:
 - duration
@@ -99,7 +100,7 @@ responses:
   utter_ask_email:
   - text: May I know your email?
   utter_ask_confirm:
-  - text: |-
+  - text: |
       Here is your order detail: 
        - Services: {service}
        - Duration: {duration}
