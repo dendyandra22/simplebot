@@ -86,19 +86,26 @@ forms:
 responses:
   utter_greet:
   - text: Welcome to SimpleBot! What can I help you today?
+
   utter_did_that_help:
   - text: Did that help you?
+
   utter_thankyou:
   - text: You're welcome, I'm glad to help you. Do you have any question?
   - text: No problem, I'm glad to help you. Do you need more assistant?
+  
   utter_ask_service:
   - text: What services do you want to subscribe?
+  
   utter_ask_duration:
   - text: How many months do you want to subsribe?
+  
   utter_ask_payment:
   - text: We accept payment with Debit card, Credit Card, and Bitcoin. Which one would you like to use?
+  
   utter_ask_email:
   - text: May I know your email?
+  
   utter_ask_confirm:
   - text: |
       Here is your order detail: 
@@ -108,27 +115,40 @@ responses:
        - Email   : {email}
 
       Is that correct? 
+  
   utter_affirm_stop_form:
   - text: Your order has been canceled. What can I help you now?
+  
   utter_thankyou_feedback:
   - text: Thank you for your feeback
+  
   utter_thankyou_order:
   - text: Thank you for using our services! Details of your services will be sent to your email at {email}
+  
   utter_about/company:
   - text: We are X'Bots, we provide many AI and IT services to support your company. Our company established in 2027 and currently we have moe than 90 clients
+  
   utter_about/services:
   - text: We offer you 2 different services, namely LiveBot provide live chatting and NaBot for Natural Language AI services
+  
   utter_goodbye:
   - text: See you later. If you need more assistant, feel free to contact me again
   - text: If you need help, feel free to contact me again. See you!
+  
   utter_iamabot:
   - text: I am a LiveBot. I am here to provide you information about our company and services
+  
   utter_ask_continue:
   - text: Do you want to continue?
+  
   utter_chitchat/feeling:
   - text: I'm feeling good today!
   - text: I'm good today
   - text: I feel really great now 
+  
+  utter_chitchat/outofscope:
+  - text: Sorry I can't understand that
+  
   utter_default:
   - text: Sorry, I didn't understand you, please try input something else
 session_config:
