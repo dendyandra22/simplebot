@@ -32,9 +32,7 @@ stories:
   - intent: affirm
   - action: utter_thankyou_order
   - action: utter_did_that_help
-  - or:
-    - intent: affirm
-    - intent: deny
+  - intent: affirm
   - action: utter_thankyou_feedback
   - intent: goodbye
   - action: utter_goodbye
