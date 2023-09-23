@@ -151,3 +151,11 @@ nlu:
     - how is your feeling?
     - what do you feel right now?
     - how do you do?
+
+- intent: chitchat/outofscope
+  examples: |
+    - what is 2+2?
+    - what is your opinion about him?
+    - tell me your name
+    - give me your number phone
+    - how old are you
